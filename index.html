@@ -19,12 +19,20 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-6 d-flex justify-content-end">
-                <input type="text" class="form-control form-control-md mx-3" style="width: fit-content;" placeholder="Location">
+            <form id="locForm" action="">
+                <div class="col-md-6 d-flex justify-content-end">
+                    <input type="text" id="locInput" class="form-control form-control-md mx-3" style="width: fit-content;" placeholder="Location">
+                </div>
+                <div class="col-md-6 d-flex justify-content-start">
+                    <button id="locBtn" class="btn btn-primary">Get Data</button>
+                </div>
+            </form>
+            <!-- <div class="col-md-6 d-flex justify-content-end">
+                <input type="text" id="locInput" class="form-control form-control-md mx-3" style="width: fit-content;" placeholder="Location">
             </div>
             <div class="col-md-6 d-flex justify-content-start">
-                <button class="btn btn-primary">Get Data</button>
-            </div>
+                <button id="locBtn" class="btn btn-primary">Get Data</button>
+            </div> -->
         </div>
 
         <div class="row d-flex justify-content-center">
@@ -34,6 +42,7 @@
                         <img src="./resource/images/speed_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">Active Cases</h4>
+                    <h6 id="activeCasesTv">-</h6>
                 </div>
             </div>
             <div class="card mx-2 my-2" style="width: 18rem;">
@@ -42,6 +51,7 @@
                         <img src="./resource/images/add_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">New Cases</h5>
+                    <h6 id="newCasesTv">-</h6>
                 </div>
             </div>
             <div class="card mx-2 my-2" style="width: 18rem;">
@@ -50,6 +60,7 @@
                         <img src="./resource/images/check_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">Recovered Cases</h5>
+                    <h6 id="recoveredCasesTv">-</h6>
                 </div>
             </div>
             <div class="card mx-2 my-2" style="width: 18rem;">
@@ -58,6 +69,7 @@
                         <img src="./resource/images/menu_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">Total Cases</h5>
+                    <h6 id="totalCasesTv">-</h6>
                 </div>
             </div>
             <div class="card mx-2 my-2" style="width: 18rem;">
@@ -66,6 +78,7 @@
                         <img src="./resource/images/skull_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">Total Deaths</h5>
+                    <h6 id="totalDeathsTv">-</h6>
                 </div>
             </div>
             <div class="card mx-2 my-2" style="width: 18rem;">
@@ -74,6 +87,7 @@
                         <img src="./resource/images/lab_panel_FILL0_wght400_GRAD0_opsz24.svg" alt="" style="height: 40px; width: 40px;">
                     </div>
                     <h4 style="text-align: center;">Total Tests</h5>
+                    <h6 id="totalTestsTv">-</h6>
                 </div>
             </div>
         </div>
