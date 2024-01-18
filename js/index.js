@@ -14,42 +14,55 @@ const totalTestsTv = document.getElementById("totalTestsTv");
 locForm.addEventListener("submit", function(event){
     event.preventDefault();
 
-    getLocData();
+    locBtn.innerHTML = `<span id="loadingIcon" class="spinner-border spinner-border-sm mx-1" role="status" aria-hidden="true"></span>Fetching Data`;
+    getLocData(locInput.value).then(function(value){
+        if(value == "Input Error"){
+            console.log(value);
+        }else{
+            console.log(value);
+            showData(value);
+        }
+        locBtn.innerHTML = "Get Data";
+    });
 
     this.reset();
 })
 
 
-async function getLocData(){
-    let locDataResponse = await fetch('https://covid-193.p.rapidapi.com/statistics?country=indonesia', {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '850ecbb5cbmsh5829d0c239efc33p14be0cjsn555cafe0330e',
-            'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+async function getLocData(location){
+    try{
+        if(location.length == 0) {
+            throw("Input Error");
         }
-    });
-    
-    let locDataResponseParsed = await locDataResponse.json();
-    
-    showData(locDataResponseParsed);
-    
+
+        let locDataResponse = await fetch(`https://covid-193.p.rapidapi.com/statistics?country=${location}`, {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '850ecbb5cbmsh5829d0c239efc33p14be0cjsn555cafe0330e',
+                'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+            }
+        });
+
+        let locDataResponseParsed = await locDataResponse.json();
+        return locDataResponseParsed;
+    }catch(error){
+        return error;
+    }    
 }
 
 function showData(data){
-    console.log(data);
-    activeCasesTv.innerHTML = data.response[0].cases.active;
-    newCasesTv.innerHTML = data.response[0].cases.new;
-    recoveredCasesTv.innerHTML = data.response[0].cases.recovered;
-    totalCasesTv.innerHTML = data.response[0].cases.total;
-    totalDeathsTv.innerHTML = data.response[0].deaths.total;
-    totalTestsTv.innerHTML = data.response[0].tests.total;
+    activeCasesTv.innerHTML = data.response[0].cases.active ?? "No Data";
+    newCasesTv.innerHTML = data.response[0].cases.new  ?? "No Data";
+    recoveredCasesTv.innerHTML = data.response[0].cases.recovered  ?? "No Data";
+    totalCasesTv.innerHTML = data.response[0].cases.total ?? "No Data";
+    totalDeathsTv.innerHTML = data.response[0].deaths.total ?? "No Data";
+    totalTestsTv.innerHTML = data.response[0].tests.total ?? "No Data";
 }
 
 // xhr.addEventListener("readystatechange", function(){
 //     if(this.readyState === this.DONE){
-//         data = JSON.parse(this.response);
-//         console.log(data);
-//         showData();
+//         let data = JSON.parse(this.response);
+//         showData(data);
 //     }
 // })
 
