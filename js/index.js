@@ -38,7 +38,7 @@ async function getLocData(location){
         let locDataResponse = await fetch(`https://covid-193.p.rapidapi.com/statistics?country=${location}`, {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '850ecbb5cbmsh5829d0c239efc33p14be0cjsn555cafe0330e',
+                'X-RapidAPI-Key': '',
                 'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
             }
         });
